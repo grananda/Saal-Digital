@@ -27,17 +27,23 @@ abstract class BaseRepository implements BaseRepositoryInterface
     /**
      * @inheritdoc
      */
-    public function findAll()
+    public function search($param)
     {
-        return $this->getModel()->get();
+        return $this->getModel()
+            ->search($param)
+            ->with('children')
+            ->get();
     }
 
     /**
      * @inheritdoc
      */
-    public function findOneById($id)
+    public function findOneOrFailById($id)
     {
-        return $this->getModel()->find($id);
+        return $this->getModel()
+            ->where('id', $id)
+            ->with('children')
+            ->firstOrFail($id);
     }
 
     /**

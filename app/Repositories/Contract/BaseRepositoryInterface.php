@@ -9,15 +9,16 @@ use Illuminate\Database\Eloquent\Model;
 interface BaseRepositoryInterface
 {
     /**
+     * @param string $param
      * @return Collection
      */
-    public function findAll();
+    public function search($param);
 
     /**
      * @param $id
      * @return mixed
      */
-    public function findOneById($id);
+    public function findOneOrFailById($id);
 
     /**
      * @param array $attributes
