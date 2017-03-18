@@ -10,11 +10,20 @@ use Exception;
 
 class ObjectItemService implements ObjectItemServiceInterface
 {
+    /** @var ObjectItemRepositoryInterface */
     protected $objectItemRepository;
 
-    public function __construct(ObjectItemRepositoryInterface $objectItemRepository)
+    public function __construct(
+        ObjectItemRepositoryInterface $objectItemRepository
+    )
     {
         $this->objectItemRepository = $objectItemRepository;
+    }
+
+    /** @inheritdoc */
+    public function findAll()
+    {
+        return $this->objectItemRepository->findAll();
     }
 
     /** @inheritdoc */
@@ -49,8 +58,34 @@ class ObjectItemService implements ObjectItemServiceInterface
     {
         $objectItem = $this->objectItemRepository->findOneOrFailById($id);
 
-        if (!$this->$objectItem->delete($objectItem)) throw new Exception(trans(ApiController::HTTP_DESTROY_ERROR));
+        if (!$this->objectItemRepository->delete($objectItem)) throw new Exception(trans(ApiController::HTTP_DESTROY_ERROR));
 
         return true;
+    }
+
+    /** @inheritdoc */
+    public function attachObjectItem($parent, $child)
+    {
+        $parentObjectItem = $this->objectItemRepository->findOneOrFailById($parent);
+        $childObjectItem = $this->objectItemRepository->findOneOrFailById($child);
+
+        $parentObjectItem->children()->attach($childObjectItem);
+
+        $parentObjectItem->load('children');
+
+        return $parentObjectItem;
+    }
+
+    /** @inheritdoc */
+    public function detachObjectItem($parent, $child)
+    {
+        $parentObjectItem = $this->objectItemRepository->findOneOrFailById($parent);
+        $childObjectItem = $this->objectItemRepository->findOneOrFailById($child);
+
+        $parentObjectItem->children()->detach($childObjectItem);
+
+        $parentObjectItem->load('children');
+
+        return $parentObjectItem;
     }
 }
