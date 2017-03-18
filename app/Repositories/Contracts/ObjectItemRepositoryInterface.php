@@ -3,7 +3,7 @@
 namespace App\Repository\Contract;
 
 
-interface ObjectItemRepositoryInterface
+interface ObjectItemRepositoryInterface extends BaseRepositoryInterface
 {
 
 }
