@@ -45,7 +45,7 @@ class ObjectItem extends Model
     /**
      * @return BelongsToMany
      */
-    public function servers()
+    public function children()
     {
         return $this->belongsToMany(ObjectItem::class, 'objectItem_relations', 'child_id', 'parent_id');
     }
