@@ -47,6 +47,8 @@ class ObjectItem extends Model
      */
     public function children()
     {
-        return $this->belongsToMany(ObjectItem::class, 'objectItem_relations', 'child_id', 'parent_id');
+        return $this->belongsToMany(ObjectItem::class, 'objectItem_relations', 'child_id', 'parent_id')
+            ->withPivot('child_id', 'parent_id')
+            ->withTimestamps();
     }
 }
