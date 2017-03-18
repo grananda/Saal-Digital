@@ -14,6 +14,12 @@ interface BaseRepositoryInterface
     public function findAll();
 
     /**
+     * @param $id
+     * @return mixed
+     */
+    public function findOneById($id);
+
+    /**
      * @param array $attributes
      * @return Model
      */

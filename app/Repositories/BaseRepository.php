@@ -35,6 +35,14 @@ abstract class BaseRepository implements BaseRepositoryInterface
     /**
      * @inheritdoc
      */
+    public function findOneById($id)
+    {
+        return $this->getModel()->find($id);
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function create(array $attributes)
     {
         return $this->getModel()->create($attributes);
