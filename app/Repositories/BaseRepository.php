@@ -27,6 +27,15 @@ abstract class BaseRepository implements BaseRepositoryInterface
     /**
      * @inheritdoc
      */
+    public function findAll()
+    {
+        return $this->getModel()
+            ->get();
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function search($param)
     {
         return $this->getModel()

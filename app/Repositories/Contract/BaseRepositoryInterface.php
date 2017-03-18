@@ -9,6 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 interface BaseRepositoryInterface
 {
     /**
+     * @return Collection
+     */
+    public function findAll();
+
+    /**
      * @param string $param
      * @return Collection
      */
