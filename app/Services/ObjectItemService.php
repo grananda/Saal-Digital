@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use App\Services\Contract\ObjectItemsServiceInterface;
+use App\Services\Contract\ObjectItemServiceInterface;
 
-class ObjectItemService implements ObjectItemsServiceInterface
+class ObjectItemService implements ObjectItemServiceInterface
 {
 
 }
