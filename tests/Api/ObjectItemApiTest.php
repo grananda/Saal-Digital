@@ -1,10 +1,9 @@
 <?php
 
-namespace Tests\Api;
+namespace Tests;
 
 use App\Models\User;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
-use Tests\ApiTestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 

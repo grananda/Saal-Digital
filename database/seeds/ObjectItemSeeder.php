@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Tests\Api\ObjectItemApiTestTrait;
+use Tests\ObjectItemApiTestTrait;
 
 class ObjectItemSeeder extends Seeder
 {

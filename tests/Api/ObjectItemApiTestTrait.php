@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Api;
+namespace Tests;
 
 use App\Models\ObjectItem;
 use Carbon\Carbon;
