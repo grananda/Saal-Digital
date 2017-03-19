@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Query\Builder;
-use Laravel\Scout\Searchable;
 
 /**
  * App\Object
@@ -26,8 +25,6 @@ use Laravel\Scout\Searchable;
  */
 class ObjectItem extends Model
 {
-    use Searchable;
-
     /**
      * @var array
      */
@@ -50,7 +47,7 @@ class ObjectItem extends Model
      */
     public function children()
     {
-        return $this->belongsToMany(ObjectItem::class, 'objectItem_relations', 'child_id', 'parent_id')
+        return $this->belongsToMany(ObjectItem::class, 'object_items_relations', 'child_id', 'parent_id')
             ->withPivot('child_id', 'parent_id')
             ->withTimestamps();
     }
