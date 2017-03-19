@@ -32,11 +32,27 @@ class ObjectItemWebController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return View
+     */
+    public function search(Request $request)
+    {
+        $objectItems = $this->objectItemService->search($request->all());
+
+        return view('search')
+            ->with('objectItems', $objectItems);
+    }
+
+    /**
      * @return View
      */
     public function create()
     {
-        return view('form');
+        $objectItem = $this->objectItemService->createObjectItem();
+
+        return view('form')
+            ->with('action', 'create')
+            ->with('objectItem', $objectItem);
     }
 
     /**
@@ -72,6 +88,7 @@ class ObjectItemWebController extends Controller
         $objectItem = $this->objectItemService->findOneById($id);
 
         return view('form')
+            ->with('action', 'update')
             ->with('objectItem', $objectItem);
     }
 
