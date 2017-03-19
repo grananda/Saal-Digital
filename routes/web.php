@@ -1,5 +1,5 @@
 <?php
-Route::group(['prefix' => 'api/v1', 'namespace' => 'Web'], function () {
+Route::group(['namespace' => 'Web'], function () {
     Route::get('/objects', 'ObjectItemWebController@index');
     Route::get('/objects/{id}', 'ObjectItemWebController@show');
     Route::post('/objects/create', 'ObjectItemWebController@create');

@@ -1,5 +1,5 @@
 <?php
-Route::group(['prefix' => 'api/v1', 'namespace' => 'Api'], function () {
+Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
     Route::get('/objects', 'ObjectItemApiController@index');
     Route::get('/objects/{id}', 'ObjectItemApiController@show');
     Route::post('/objects', 'ObjectItemApiController@store');
