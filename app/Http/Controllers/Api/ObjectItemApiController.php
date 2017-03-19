@@ -36,9 +36,9 @@ class ObjectItemApiController extends ApiController
     public function show($id)
     {
         try {
-            $organizations = $this->objectItemService->findOneById($id);
+            $objectItem = $this->objectItemService->findOneById($id);
 
-            return $this->responseOk($organizations);
+            return $this->responseOk($objectItem);
         } catch (Exception $e) {
             return $this->responseInternalError($e->getMessage());
         }
@@ -52,9 +52,9 @@ class ObjectItemApiController extends ApiController
     public function store(ObjectItemRequest $request)
     {
         try {
-            $organization = $this->objectItemService->create($request->all());
+            $objectItem = $this->objectItemService->create($request->all());
 
-            return $this->responseCreated($organization);
+            return $this->responseCreated($objectItem);
         } catch (Exception $e) {
             return $this->responseInternalError($e->getMessage());
         }
@@ -68,9 +68,9 @@ class ObjectItemApiController extends ApiController
     public function update($id, ObjectItemRequest $request)
     {
         try {
-            $organization = $this->objectItemService->update($id, $request->all());
+            $objectItem = $this->objectItemService->update($id, $request->all());
 
-            return $this->responseUpdated($organization);
+            return $this->responseUpdated($objectItem);
         } catch (Exception $e) {
             return $this->responseInternalError($e->getMessage());
         }
@@ -99,9 +99,9 @@ class ObjectItemApiController extends ApiController
     public function attachObjectItem($parent, $child)
     {
         try {
-            $this->objectItemService->attachObjectItem($parent, $child);
+            $objectItem = $this->objectItemService->attachObjectItem($parent, $child);
 
-            return $this->responseDeleted();
+            return $this->responseUpdated($objectItem);
         } catch (Exception $e) {
             return $this->responseInternalError($e->getMessage());
         }
@@ -115,9 +115,9 @@ class ObjectItemApiController extends ApiController
     public function detachObjectItem($parent, $child)
     {
         try {
-            $this->objectItemService->detachObjectItem($parent, $child);
+            $objectItem = $this->objectItemService->detachObjectItem($parent, $child);
 
-            return $this->responseDeleted();
+            return $this->responseUpdated($objectItem);
         } catch (Exception $e) {
             return $this->responseInternalError($e->getMessage());
         }
