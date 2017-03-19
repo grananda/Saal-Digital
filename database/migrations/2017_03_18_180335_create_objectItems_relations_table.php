@@ -18,12 +18,12 @@ class CreateObjectItemsRelationsTable extends Migration
             $table->integer('parent_id')
                 ->unsigned()
                 ->foreign()
-                ->references('id')->on('objectItems')
+                ->references('id')->on('object_items')
                 ->onDelete('cascade');
             $table->integer('child_id')
                 ->unsigned()
                 ->foreign()
-                ->references('id')->on('objectItems')
+                ->references('id')->on('object_items')
                 ->onDelete('cascade');
             $table->timestamps();
         });
