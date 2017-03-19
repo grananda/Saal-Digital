@@ -1,5 +1,19 @@
 <?php
 
+$dbURL  = getenv('JAWSDB_URL') ? parse_url(getenv('JAWSDB_URL')) : null;
+$dbType = $dbURL['scheme'] ? $dbURL['scheme'] : env('DB_CONNECTION', 'mysql');
+$dbHost = $dbURL['host'] ? $dbURL['host'] : env('DB_HOST', 'localhost');
+$dbPort = $dbURL['port'] ? $dbURL['port'] : env('DB_PORT', '3306');
+$dbName = $dbURL["path"] ? substr($dbURL["path"], 1) : env('DB_DATABASE', 'forge');
+$dbUser = $dbURL['user'] ? $dbURL['user'] : env('DB_USERNAME', 'forge');
+$dbPass = $dbURL['pass'] ? $dbURL['pass'] : env('DB_PASSWORD', '');
+
+$redisURL  = getenv('REDISCLOUD_URL') ? parse_url(getenv('REDISCLOUD_URL')) : null;
+$redisHost = $redisURL['host'] ? $redisURL['host'] : env('REDIS_HOST', 'localhost');
+$redisPassword = $redisURL['pass'] ? $redisURL['pass'] : env('REDIS_PASSWORD', null);
+$redisPort = $redisURL['port'] ? $redisURL['port'] : env('REDIS_PORT', 6379);
+
+
 return [
 
     /*
