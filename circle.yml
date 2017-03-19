@@ -5,6 +5,7 @@ machine:
     version: 7.0.4
   environment:
     ENVIRONMENT: testing
+    APP_ENV: testing
     APP_KEY: base64:MW1LBUrZt4okK1GODeZuTRlcQVxmEEHvSMV9ASnKA08=
     DB_CONNECTION: testing
 
