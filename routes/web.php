@@ -1,5 +1,6 @@
 <?php
 Route::group(['namespace' => 'Web'], function () {
+    Route::get('/', 'ObjectItemWebController@index');
     Route::get('/objects', 'ObjectItemWebController@index');
     Route::get('/objects/{id}', 'ObjectItemWebController@show');
     Route::post('/objects/create', 'ObjectItemWebController@create');
