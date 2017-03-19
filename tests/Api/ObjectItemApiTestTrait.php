@@ -34,8 +34,10 @@ trait ObjectItemApiTestTrait
     {
         return DB::table('object_items_relations')->insert(
             [
-                'parent_id' => $parent_id,
-                'child_id'  => $child_id,
+                'parent_id'  => $parent_id,
+                'child_id'   => $child_id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]
         );
     }
