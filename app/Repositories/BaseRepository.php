@@ -51,8 +51,8 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
         return $this->getModel()
             ->where('id', $id)
-            ->with('children')
-            ->firstOrFail($id);
+            ->with(['children'])
+            ->firstOrFail();
     }
 
     /**
