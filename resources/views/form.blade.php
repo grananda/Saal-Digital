@@ -40,6 +40,23 @@
                     <textarea class="form-control" rows="3" id="description"
                               name="description">{{ old('description')? old('description'):$objectItem->description }}</textarea>
                 </div>
+
+                @if (!$objectItemList->isEmpty())
+                    <h3>Select objects to relate</h3>
+                    <ul>
+                        @foreach ($objectItemList as $item)
+                            @if($item->id != $objectItem->id)
+                                <li>
+                                    <input type="checkbox" name="children[]" value="{{ $item->id }}"
+                                            {{ $objectItem->children->contains('id', $item->id) ? 'checked="checked"': null }}
+                                    />
+                                    <span>{{ $item->name }} - <i>({{ $item->type }})</i></span>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                @endif
+
                 <button type="submit" class="btn btn-default">Save</button>
             </form>
         </div>
