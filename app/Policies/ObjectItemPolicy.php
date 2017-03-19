@@ -30,30 +30,28 @@ class ObjectItemPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can update the objectItem.
      *
      * @param  User $user
-     * @param  ObjectItem $objectItem
      * @return mixed
      */
-    public function update(User $user, ObjectItem $objectItem)
+    public function update(User $user)
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can delete the objectItem.
      *
      * @param  User $user
-     * @param  ObjectItem $objectItem
      * @return mixed
      */
-    public function delete(User $user, ObjectItem $objectItem)
+    public function delete(User $user)
     {
-        //
+        return true;
     }
 }
