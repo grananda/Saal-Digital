@@ -36,11 +36,11 @@ abstract class BaseRepository implements BaseRepositoryInterface
     /**
      * @inheritdoc
      */
-    public function search($param)
+    public function search(array $attributes)
     {
         return $this->getModel()
-            ->search($param)
-            ->with('children')
+            ->where('name', 'like', '%' . $attributes['param'] . '%')
+            ->orWhere('description', 'like', '%' . $attributes['param'] . '%')
             ->get();
     }
 

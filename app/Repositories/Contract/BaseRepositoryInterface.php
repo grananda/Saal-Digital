@@ -14,10 +14,10 @@ interface BaseRepositoryInterface
     public function findAll();
 
     /**
-     * @param string $param
+     * @param array $attributes
      * @return Collection
      */
-    public function search($param);
+    public function search(array $attributes);
 
     /**
      * @param $id
