@@ -3,6 +3,7 @@
 namespace Tests\Api;
 
 use App\Models\ObjectItem;
+use Carbon\Carbon;
 use DB;
 use Faker\Factory as Faker;
 
@@ -51,6 +52,8 @@ trait ObjectItemApiTestTrait
             'name'        => $fake->sentence(rand(2, 3)),
             'description' => $fake->paragraph,
             'type'        => $fake->randomElement(['user', 'pc', 'tablet', 'server', 'service', 'website']),
+            'created_at'  => Carbon::now(),
+            'updated_at'  => Carbon::now(),
         ], $attributes);
     }
 }
