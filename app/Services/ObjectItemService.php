@@ -27,15 +27,21 @@ class ObjectItemService implements ObjectItemServiceInterface
     }
 
     /** @inheritdoc */
-    public function search($param)
+    public function search(array $attributes)
     {
-        return $this->objectItemRepository->search($param);
+        return $this->objectItemRepository->search($attributes);
     }
 
     /** @inheritdoc */
     public function findOneById($id)
     {
         return $this->objectItemRepository->findOneOrFailById($id);
+    }
+
+    /** @inheritdoc */
+    public function createObjectItem()
+    {
+        return $this->objectItemRepository->getModel();
     }
 
     /** @inheritdoc */
