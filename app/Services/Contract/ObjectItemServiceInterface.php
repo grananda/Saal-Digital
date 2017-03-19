@@ -49,6 +49,13 @@ interface ObjectItemServiceInterface
     public function delete($id);
 
     /**
+     * @param $id
+     * @param array $attributes
+     * @return ObjectItem
+     */
+    public function setChildren($id, array $attributes);
+
+    /**
      * @param $parent
      * @param $child
      * @return ObjectItem

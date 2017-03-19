@@ -70,6 +70,21 @@ class ObjectItemService implements ObjectItemServiceInterface
     }
 
     /** @inheritdoc */
+    public function setChildren($id, array $attributes)
+    {
+        $objectItem = $this->findOneById($id);
+        $objectItem->detachAllChildren();
+
+        if (isset($attributes['children'])) {
+            foreach ($attributes['children'] as $child) {
+                $objectItem = $this->attachObjectItem($objectItem->id, $child);
+            }
+        }
+
+        return $objectItem;
+    }
+
+    /** @inheritdoc */
     public function attachObjectItem($parent, $child)
     {
         $parentObjectItem = $this->objectItemRepository->findOneOrFailById($parent);

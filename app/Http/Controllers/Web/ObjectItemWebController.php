@@ -49,10 +49,12 @@ class ObjectItemWebController extends Controller
     public function create()
     {
         $objectItem = $this->objectItemService->createObjectItem();
+        $objectItemList = $this->objectItemService->findAll();
 
         return view('form')
             ->with('action', 'create')
-            ->with('objectItem', $objectItem);
+            ->with('objectItem', $objectItem)
+            ->with('objectItemList', $objectItemList);
     }
 
     /**
@@ -62,6 +64,7 @@ class ObjectItemWebController extends Controller
     public function store(ObjectItemRequest $request)
     {
         $objectItem = $this->objectItemService->create($request->all());
+        $objectItem = $this->objectItemService->setChildren($objectItem->id, $request->all());
 
         return view('show')
             ->with('objectItem', $objectItem);
@@ -86,10 +89,12 @@ class ObjectItemWebController extends Controller
     public function edit($id)
     {
         $objectItem = $this->objectItemService->findOneById($id);
+        $objectItemList = $this->objectItemService->findAll();
 
         return view('form')
             ->with('action', 'update')
-            ->with('objectItem', $objectItem);
+            ->with('objectItem', $objectItem)
+            ->with('objectItemList', $objectItemList);
     }
 
     /**
@@ -100,6 +105,7 @@ class ObjectItemWebController extends Controller
     public function update($id, ObjectItemRequest $request)
     {
         $objectItem = $this->objectItemService->update($id, $request->all());
+        $objectItem = $this->objectItemService->setChildren($objectItem->id, $request->all());
 
         return view('show')
             ->with('objectItem', $objectItem);

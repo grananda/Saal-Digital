@@ -51,4 +51,10 @@ class ObjectItem extends Model
             ->withPivot('child_id', 'parent_id')
             ->withTimestamps();
     }
+
+    public function detachAllChildren()
+    {
+        $this->children()->detach();
+        $this->load('children');
+    }
 }
