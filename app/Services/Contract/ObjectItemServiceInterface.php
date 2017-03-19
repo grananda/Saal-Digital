@@ -13,16 +13,21 @@ interface ObjectItemServiceInterface
     public function findAll();
 
     /**
-     * @param string $param
+     * @param array $attributes
      * @return Collection
      */
-    public function search($param);
+    public function search(array $attributes);
 
     /**
      * @param $id
      * @return ObjectItem
      */
     public function findOneById($id);
+
+    /**
+     * @return ObjectItem
+     */
+    public function createObjectItem();
 
     /**
      * @param array $attributes
