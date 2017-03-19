@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateObjectRelationsTable extends Migration
+class CreateObjectItemsRelationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateObjectRelationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('objectItems_relations', function (Blueprint $table) {
+        Schema::create('object_items_relations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('parent_id')
                 ->unsigned()
@@ -36,6 +36,6 @@ class CreateObjectRelationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('objectItems_relations');
+        Schema::dropIfExists('object_items_relations');
     }
 }

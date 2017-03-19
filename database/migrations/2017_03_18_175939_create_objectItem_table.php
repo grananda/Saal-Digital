@@ -13,7 +13,7 @@ class CreateObjectItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('objectItems', function (Blueprint $table) {
+        Schema::create('object_items', function (Blueprint $table) {
             $table->increments('id');
             $table->string("name")->index();
             $table->string("description");
@@ -29,6 +29,6 @@ class CreateObjectItemTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('objectItems');
+        Schema::dropIfExists('object_items');
     }
 }
